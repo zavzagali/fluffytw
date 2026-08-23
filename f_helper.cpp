@@ -76,8 +76,13 @@ int FHelper::GetCustomTile(float x, float y) const
 	if(!m_pClient->Collision()->GetTiles())
 		return 0;
 
+<<<<<<< HEAD
 	int Nx = clamp(static_cast<int>(x / 32), 0, m_pClient->Collision()->GetWidth() - 1);
 	int Ny = clamp(static_cast<int>(y / 32), 0, m_pClient->Collision()->GetHeight() - 1);
+=======
+	int Nx = std::clamp(static_cast<int>(x / 32), 0, m_pClient->Collision()->GetWidth() - 1);
+	int Ny = std::clamp(static_cast<int>(y / 32), 0, m_pClient->Collision()->GetHeight() - 1);
+>>>>>>> bc978f2 (19.9 port)
 	int pos = Ny * m_pClient->Collision()->GetWidth() + Nx;
 
 	return m_pClient->Collision()->GetTiles()[pos].m_Index;
