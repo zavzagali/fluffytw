@@ -1,4 +1,6 @@
-﻿#include "game/client/prediction/entities/character.h"
+﻿#include <algorithm>
+
+#include "game/client/prediction/entities/character.h"
 #include "game/client/fluffytw/f_helper.h"
 #include "aimbot.h"
 
@@ -213,11 +215,7 @@ vec2 FAimbot::NormalizeAim(vec2 Pos)
 	const float FollowFactor = (g_Config.m_ClDyncam ? g_Config.m_ClDyncamFollowFactor : g_Config.m_ClMouseFollowfactor) / 100.f;
 	const float DeadZone = g_Config.m_ClDyncam ? g_Config.m_ClDyncamDeadzone : g_Config.m_ClMouseDeadzone;
 	const float MaxDistance = g_Config.m_ClMouseMaxDistance;
-<<<<<<< HEAD
-	const float MouseMax = minimum((FollowFactor != 0.f ? CameraMaxDistance / FollowFactor + DeadZone : MaxDistance), MaxDistance);
-=======
 	const float MouseMax = std::min((FollowFactor != 0.f ? CameraMaxDistance / FollowFactor + DeadZone : MaxDistance), MaxDistance);
->>>>>>> bc978f2 (19.9 port)
 	const float MDistance = length(Pos);
 	Pos = normalize_pre_length(Pos, MDistance) * MouseMax;
 	Pos = vec2(static_cast<int>(Pos.x), static_cast<int>(Pos.y));

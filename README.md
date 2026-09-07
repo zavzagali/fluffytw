@@ -1,18 +1,24 @@
-fluffytw is a base for Teeworlds/DDNet hacking, updated here to build against
-DDNet 19.9.
+# fluffytw
 
-The original project (`fluffysnaff/fluffytw`) was made for older DDNet versions
-that used a different client build setup. 19.9 collects client sources with
-`GLOB_RECURSE`, so there's no `add_subdirectory` for fluffytw anymore and this
-folder's `CMakeLists.txt` isn't pulled in by the DDNet build itself.
+<p align="center">
+  <img src="./images/logo.png" alt="Fluffytw Logo">
+</p>
 
-## Features
-- **Aimbot** (hook-assisted): aims your hook at other players.
-- **ESP / visuals**: draws the aimbot FOV.
+<p align="center">fluffytw is a base for Teeworlds hacking. </p>
+<div align="center">
+  <!-- Primary Badges -->
+  <a href="https://github.com/fluffysnaff/fluffytw"><img src="https://img.shields.io/badge/For-Teeworlds-98d243?style=for-the-badge" alt="For Teeworlds"></a>
+  <a href="https://github.com/fluffysnaff/fluffytw"><img src="https://img.shields.io/badge/Type-Hacking%20Base-blueviolet?style=for-the-badge" alt="Type: Hacking Base"></a>
+  <a href="https://github.com/fluffysnaff/fluffytw/commits/master"><img src="https://img.shields.io/github/last-commit/fluffysnaff/fluffytw?style=for-the-badge" alt="Last Commit"></a>
+  <!-- Secondary / Tech Badges -->
+  <br/>
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+  <img src="https://img.shields.io/badge/Compatible%20with-DDNet-lightgrey?style=flat-square" alt="Compatible with DDNet">
+  <!-- Special Call-to-Action Badge -->
+  <a href="https://krxteam.com/krx-client#pricing"><img src="https://img.shields.io/badge/Premium%20Version-KRX%20Client-gold?style=flat-square&logo=rocket" alt="KRX Client"></a>
+</div>
 
-Everything is configurable as `cl_fluffy_*` console variables.
-
-## Building it into DDNet 19.9
+## Building it into DDNet 19.9 
 1. Put this folder at `ddnet-19.9/src/game/client/fluffytw`
    (so that `src/game/client/fluffytw/f_helper.h` exists).
 2. Apply the DDNet-side changes below. Easiest is to just grab a DDNet 19.9
