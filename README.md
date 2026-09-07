@@ -18,6 +18,18 @@
   <a href="https://krxteam.com/krx-client#pricing"><img src="https://img.shields.io/badge/Premium%20Version-KRX%20Client-gold?style=flat-square&logo=rocket" alt="KRX Client"></a>
 </div>
 
+---
+
+## From Open-Source to Ultimate Power
+
+Liking `fluffytw`? If you want to skip the setup and access the most powerful features, like advanced replay bots, ad-free experience, and priority support—all in a ready-to-go package, **KRX Client** is for you.
+
+It's the ultimate, pre-compiled version of our work, built for players who want maximum performance with zero hassle.
+
+➡️ **[Check out KRX Client's Premium Features](https://krxteam.com/krx-client#pricing)**
+
+---
+
 ## Building it into DDNet 19.9 
 1. Put this folder at `ddnet-19.9/src/game/client/fluffytw`
    (so that `src/game/client/fluffytw/f_helper.h` exists).
