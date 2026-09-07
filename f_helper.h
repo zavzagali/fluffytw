@@ -8,6 +8,9 @@
 #include <game/client/fluffytw/f_config.h>
 
 #include "base/logger.h"
+#include "base/str.h"
+#include "base/time.h"
+#include "base/log.h"
 
 class FHelper
 {
@@ -52,7 +55,7 @@ public:
 		va_start(args, fmt);
 		CLogMessage Msg;
 		Msg.m_Level = LEVEL_INFO;
-		str_timestamp_format(Msg.m_aTimestamp, sizeof(Msg.m_aTimestamp), FORMAT_SPACE);
+		str_timestamp_format(Msg.m_aTimestamp, sizeof(Msg.m_aTimestamp), TimestampFormat::SPACE);
 		Msg.m_TimestampLength = str_length(Msg.m_aTimestamp);
 		str_copy(Msg.m_aSystem, sys);
 		Msg.m_SystemLength = str_length(Msg.m_aSystem);
