@@ -112,3 +112,16 @@ you hold hook and there's a clear line to the target.
 | `cl_fluffy_aimbot_accuracy` | 1 | Edge scan accuracy (1–100) |
 | `cl_fluffy_esp` | 0 | Enable ESP |
 | `cl_fluffy_esp_fov` | 0 | Draw aimbot FOV |
+
+
+## Possible problems
+1. If something isn't working, make sure that configs are setup right and everything is executing.  
+2. Aimbot isn't working - Debug it. For example set `m_CanAim` always to true and see if it works.  
+
+## Showcase
+1. [Hitpoint scan](https://streamable.com/s81xls)   
+2. [Hook prediction](https://streamable.com/j51ilg)  & [Without hook prediction](https://streamable.com/4zegsy)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=fluffysnaff/fluffytw&type=Date)](https://star-history.com/#fluffysnaff/fluffytw&Date)
