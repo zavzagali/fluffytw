@@ -30,20 +30,19 @@ It's the ultimate, pre-compiled version of our work, built for players who want 
 
 ---
 
-## Building it into DDNet 19.9 
-1. Put this folder at `ddnet-19.9/src/game/client/fluffytw`
+## Building it into DDNet 20.0 
+1. Put this folder at `ddnet-20.0/src/game/client/fluffytw`
    (so that `src/game/client/fluffytw/f_helper.h` exists).
-2. Apply the DDNet-side changes below. Easiest is to just grab a DDNet 19.9
+2. Apply the DDNet-side changes below. Easiest is to just grab a DDNet 20.0
    fork that already has them.
 
 You need the following changes on the DDNet side:
 
-- `src/game/collision.h`: add a getter
+- `src/game/collision.h`: add a non-const getter in the `CCollision` public section, right after `GameLayer()`:
   ```cpp
-  CTile *GetTiles() const { return m_pTiles; }
+  CTile *GetTiles() { return m_pTiles; }
   ```
-- `src/engine/shared/config_variables.h`: add the config variables (also listed
-  in the table at the bottom):
+- `src/engine/shared/config_variables.h`: add the config variables right after `EdShowIngameEntities`, before `ClShowWelcome`:
   ```cpp
   MACRO_CONFIG_INT(FluffyAimbot, cl_fluffy_aimbot, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: enable aimbot")
   MACRO_CONFIG_INT(FluffyAimbotFov, cl_fluffy_aimbot_fov, 360, 0, 360, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: aimbot field of view")
@@ -55,30 +54,24 @@ You need the following changes on the DDNet side:
   MACRO_CONFIG_INT(FluffyEspFov, cl_fluffy_esp_fov, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: draw aimbot fov")
   ```
 
-
-Add this to `CMakeLists.txt`: 
+Add this to `src/CMakeLists.txt` right before `set(CLIENT_SRC ...)`:
 ```cmake
 add_subdirectory(src/game/client/fluffytw)
 ```
 
-It should be placed before:
-```cmake
-set(CLIENT_SRC ${ENGINE_CLIENT} ${PLATFORM_CLIENT} ${GAME_CLIENT} ${GAME_EDITOR} ${GAME_MAP} ${GAME_GENERATED_CLIENT})
-```
 
-
-- `src/game/client/gameclient.cpp`:
+- `src/game/client/gameclient.cpp`: add include at top, add `std::unique_ptr<FHelper> fHelper` as a member, then in `CGameClient::OnConsoleInit()`:
   ```cpp
   #include <memory>
   #include "game/client/fluffytw/f_helper.h"
   ...
-  std::unique_ptr<FHelper> fHelper; // near the other globals
+  std::unique_ptr<FHelper> fHelper; // near the other globals in gameclient.h
   ...
   // inside CGameClient::OnConsoleInit():
   fHelper = std::make_unique<FHelper>(this);
   ```
-- `src/game/client/components/controls.cpp`: include the header, then in
-  `SnapInput` (after the direction block) feed the config and run the bots:
+- `src/game/client/components/controls.cpp`: include the header at top, then in
+  `SnapInput`, right after the direction block (`// set direction` section), feed the config and run the bots:
   ```cpp
   #include "game/client/fluffytw/f_helper.h"
   ...
@@ -90,8 +83,8 @@ set(CLIENT_SRC ${ENGINE_CLIENT} ${PLATFORM_CLIENT} ${GAME_CLIENT} ${GAME_EDITOR}
   fHelper->m_pConfig->aimbotCfg.accuracy = static_cast<float>(g_Config.m_FluffyAimbotAccuracy);
   fHelper->m_pBots->Run();
   ```
-- `src/game/client/components/players.cpp`: include the header, then in
-  `RenderPlayer` (once `Position` is known) run the visuals:
+- `src/game/client/components/players.cpp`: include the header at top, then in
+  `RenderPlayer`, right after `Position` is calculated, run the visuals:
   ```cpp
   #include "game/client/fluffytw/f_helper.h"
   ...
