@@ -54,22 +54,19 @@ You need the following changes on the DDNet side:
   MACRO_CONFIG_INT(FluffyEsp, cl_fluffy_esp, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: enable esp/visuals")
   MACRO_CONFIG_INT(FluffyEspFov, cl_fluffy_esp_fov, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: draw aimbot fov")
   ```
-- root `CMakeLists.txt`: add the fluffytw files to `GAME_CLIENT` (inside the
-  `set_src(GAME_CLIENT GLOB_RECURSE ...)` block), in alphabetical order:
-  ```
-  fluffytw/aimbot/aimbot.cpp
-  fluffytw/aimbot/aimbot.h
-  fluffytw/aimbot/aimbot_scans.cpp
-  fluffytw/f_bots.cpp
-  fluffytw/f_bots.h
-  fluffytw/f_component.h
-  fluffytw/f_config.h
-  fluffytw/f_helper.cpp
-  fluffytw/f_helper.h
-  fluffytw/f_visuals.cpp
-  fluffytw/f_visuals.h
-  fluffytw/f_visuals-base.cpp
-  ```
+
+
+Add this to `CMakeLists.txt`: 
+```cmake
+add_subdirectory(src/game/client/fluffytw)
+```
+
+It should be placed before:
+```cmake
+set(CLIENT_SRC ${ENGINE_CLIENT} ${PLATFORM_CLIENT} ${GAME_CLIENT} ${GAME_EDITOR} ${GAME_MAP} ${GAME_GENERATED_CLIENT})
+```
+
+
 - `src/game/client/gameclient.cpp`:
   ```cpp
   #include <memory>
