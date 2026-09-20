@@ -63,9 +63,7 @@ It's the ultimate, pre-compiled version of our work, built for players who want 
   MACRO_CONFIG_INT(FluffyEsp, cl_fluffy_esp, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: enable esp/visuals")
   MACRO_CONFIG_INT(FluffyEspFov, cl_fluffy_esp_fov, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_CLIENT, "fluffytw: draw aimbot fov")
   ```
-  
-  ## Initialization
-  
+    
   Inside `gameclient.cpp` add this:
   ```cpp
   #include <memory>
@@ -82,9 +80,7 @@ It's the ultimate, pre-compiled version of our work, built for players who want 
   // ...
   }
   ```
-  
-  ## Usage
-  
+    
   1. **Visuals**  
      Inside `players.cpp` include:
      ```cpp
